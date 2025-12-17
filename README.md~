@@ -26,7 +26,7 @@ Projeyi çalıştırmak için aşağıdaki Python kütüphanelerinin yüklü olm
 1. Gerekli Kütüphaneler
 Terminal veya komut satırında şu komutu çalıştırarak hepsini yükleyebilirsiniz:
 
-Bash
+```Bash
 
 pip install torch torchvision torchaudio
 pip install streamlit
@@ -42,7 +42,7 @@ Eğitilmiş .pth uzantılı model dosyanızın (Örn: model.pth) proje ana dizin
 Nasıl Kullanılır?
 Kurulumu tamamladıktan sonra projeyi başlatmak için terminale şu komutu yazın:
 
-Bash
+```Bash
 
 streamlit run app.py
 Tarayıcınızda açılan sayfada:
@@ -55,9 +55,5 @@ Hastalığı Teşhis Et butonuna basın ve sonucu görüntüleyin.
 
 --- Proje Ekibi ---
 
-Muhammet Arif DAYI
-
-
-
-
+Muhammed Arif DAYI
 Mehmet Emircan KÜLLÜCEK
