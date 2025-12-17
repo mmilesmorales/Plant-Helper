@@ -27,6 +27,7 @@ Projeyi çalıştırmak için aşağıdaki Python kütüphanelerinin yüklü olm
 Terminal veya komut satırında şu komutu çalıştırarak hepsini yükleyebilirsiniz:
 
 ```bash
+
 pip install torch torchvision torchaudio
 pip install streamlit
 pip install rembg
@@ -43,6 +44,7 @@ Nasıl Kullanılır?
 Kurulumu tamamladıktan sonra projeyi başlatmak için terminale şu komutu yazın:
 
 ```bash
+
 streamlit run app.py
 ```
 Tarayıcınızda açılan sayfada:
