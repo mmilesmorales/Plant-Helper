@@ -26,6 +26,10 @@ Projeyi çalıştırmak için aşağıdaki Python kütüphanelerinin yüklü olm
 1. Gerekli Kütüphaneler
 Terminal veya komut satırında şu komutu çalıştırarak hepsini yükleyebilirsiniz:
 
+```console
+foo@bar:~$ whoami
+foo
+```
 
 ```bash
 pip install torch torchvision torchaudio
