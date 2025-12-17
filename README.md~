@@ -26,8 +26,8 @@ Projeyi çalıştırmak için aşağıdaki Python kütüphanelerinin yüklü olm
 1. Gerekli Kütüphaneler
 Terminal veya komut satırında şu komutu çalıştırarak hepsini yükleyebilirsiniz:
 
-```
 
+```bash
 pip install torch torchvision torchaudio
 pip install streamlit
 pip install rembg
@@ -35,6 +35,7 @@ pip install onnxruntime
 pip install pillow
 pip install numpy
 ```
+
 (Not: Eğer ekran kartınız (GPU) varsa onnxruntime-gpu kurarak arka plan temizleme işlemini hızlandırabilirsiniz.)
 
 2. Modeli İndirme
@@ -43,10 +44,11 @@ Eğitilmiş .pth uzantılı model dosyanızın (Örn: model.pth) proje ana dizin
 Nasıl Kullanılır?
 Kurulumu tamamladıktan sonra projeyi başlatmak için terminale şu komutu yazın:
 
-```
-
+```bash
 streamlit run app.py
 ```
+
+
 Tarayıcınızda açılan sayfada:
 
 Fotoğraf Yükle butonuna basarak bir yaprak fotoğrafı seçin.
