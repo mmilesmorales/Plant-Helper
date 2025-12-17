@@ -27,13 +27,13 @@ Projeyi çalıştırmak için aşağıdaki Python kütüphanelerinin yüklü olm
 Terminal veya komut satırında şu komutu çalıştırarak hepsini yükleyebilirsiniz:
 
 ```Bash
-
 pip install torch torchvision torchaudio
 pip install streamlit
 pip install rembg
 pip install onnxruntime
 pip install pillow
 pip install numpy
+```
 (Not: Eğer ekran kartınız (GPU) varsa onnxruntime-gpu kurarak arka plan temizleme işlemini hızlandırabilirsiniz.)
 
 2. Modeli İndirme
@@ -43,8 +43,8 @@ Nasıl Kullanılır?
 Kurulumu tamamladıktan sonra projeyi başlatmak için terminale şu komutu yazın:
 
 ```Bash
-
 streamlit run app.py
+```
 Tarayıcınızda açılan sayfada:
 
 Fotoğraf Yükle butonuna basarak bir yaprak fotoğrafı seçin.
