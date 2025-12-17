@@ -28,7 +28,6 @@ Terminal veya komut satırında şu komutu çalıştırarak hepsini yükleyebili
 
 
 ```bash
-
 pip install torch torchvision torchaudio
 pip install streamlit
 pip install rembg
