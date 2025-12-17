@@ -1,1 +1,63 @@
-# Plant-Helper
+🌱 Plant Helper - Akıllı Bitki Hastalık Tespit Sistemi
+
+Plant Helper, derin öğrenme (Deep Learning) tekniklerini kullanarak bitki yapraklarındaki hastalıkları tespit eden ve çiftçilere/hobicilere anlık teşhis sunan yapay zeka tabanlı bir asistandır.
+
+Proje, %99.6 doğruluk oranıyla Domates, Elma, Mısır ve Üzüm bitkilerindeki hastalıkları teşhis edebilir. Ayrıca, bitki olmayan nesneleri (araba, insan vb.) ayırt ederek yanlış teşhisleri önleyen akıllı bir filtreleme mekanizmasına sahiptir.
+
+--- Özellikler ---
+
+-Çoklu Bitki Desteği: 4 farklı bitki türü ve 22 farklı hastalık sınıfı.
+
+
+-"Others" Sınıfı: Bitki olmayan nesneleri tanır ve filtreler (Yanlış Pozitif Engelleme).
+
+
+-Arka Plan Temizleme: rembg entegrasyonu ile karmaşık arka planları temizleyerek odağı artırır.
+
+
+-Güçlü Mimari: Transfer Learning yöntemiyle eğitilmiş ResNet-50 modeli.
+
+
+-Kullanıcı Dostu Arayüz: Streamlit ile geliştirilmiş modern web arayüzü.
+
+--- Kurulum ve Gereksinimler ---
+Projeyi çalıştırmak için aşağıdaki Python kütüphanelerinin yüklü olması gerekmektedir.
+
+1. Gerekli Kütüphaneler
+Terminal veya komut satırında şu komutu çalıştırarak hepsini yükleyebilirsiniz:
+
+Bash
+
+pip install torch torchvision torchaudio
+pip install streamlit
+pip install rembg
+pip install onnxruntime
+pip install pillow
+pip install numpy
+(Not: Eğer ekran kartınız (GPU) varsa onnxruntime-gpu kurarak arka plan temizleme işlemini hızlandırabilirsiniz.)
+
+2. Modeli İndirme
+Eğitilmiş .pth uzantılı model dosyanızın (Örn: model.pth) proje ana dizininde olduğundan emin olun.
+
+Nasıl Kullanılır?
+Kurulumu tamamladıktan sonra projeyi başlatmak için terminale şu komutu yazın:
+
+Bash
+
+streamlit run app.py
+Tarayıcınızda açılan sayfada:
+
+Fotoğraf Yükle butonuna basarak bir yaprak fotoğrafı seçin.
+
+İsteğe bağlı olarak "Arka Planı Temizle" kutucuğunu işaretleyin (Karmaşık fotoğraflar için önerilir).
+
+Hastalığı Teşhis Et butonuna basın ve sonucu görüntüleyin.
+
+--- Proje Ekibi ---
+
+Muhammet Arif DAYI
+
+
+
+
+Mehmet Emircan KÜLLÜCEK
