@@ -10,12 +10,12 @@ from rembg import remove
 import io
 import numpy as np
 
-# --- AYARLAR ---
+# AYARLAR 
 MODEL_PATH = 'model.pth' # .pth dosyanın adı
 NUM_CLASSES = 23         # 22 Bitki + 1 Others
 
 DISEASE_INFO = {
-    # --- DOMATES (TOMATO) ---
+    # DOMATES (TOMATO)
     'Tomato___Bacterial_spot': {
         'name': 'Domates: Bakteriyel Leke (Bacterial Spot)',
         'cause': 'Xanthomonas bakterisi neden olur. Özellikle yüksek nemli ve yağışlı havalarda hızla yayılır.',
@@ -77,7 +77,7 @@ DISEASE_INFO = {
         'treatment': '-'
     },
 
-    # --- ELMA (APPLE) ---
+    # ELMA (APPLE)
     'Apple___Apple_scab': {
         'name': 'Elma: Kara Leke',
         'cause': 'Venturia inaequalis mantarı. İlkbaharın yağışlı ve serin gitmesi hastalığı tetikler.',
@@ -103,7 +103,7 @@ DISEASE_INFO = {
         'treatment': '-'
     },
 
-    # --- MISIR (CORN) ---
+    # MISIR (CORN)
     'Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot': {
         'name': 'Mısır: Gri Yaprak Lekesi',
         'cause': 'Cercospora zeae-maydis mantarı. Dikdörtgen şeklinde gri/kahverengi lekeler yapar.',
@@ -129,7 +129,7 @@ DISEASE_INFO = {
         'treatment': '-'
     },
 
-    # --- ÜZÜM (GRAPE) ---
+    # ÜZÜM (GRAPE)
     'Grape___Black_rot': {
         'name': 'Üzüm: Siyah Çürüklük',
         'cause': 'Guignardia bidwellii mantarı. Meyveleri büzüştürür ve mumyalaştırır (siyah kuru üzüm gibi olur).',
@@ -155,7 +155,7 @@ DISEASE_INFO = {
         'treatment': '-'
     },
 
-    # --- OTHERS (DİĞERLERİ) ---
+    # OTHERS (DİĞERLERİ)
     'Others': {
         'name': 'Tanımlanamayan Nesne / Bitki Değil',
         'cause': 'Yüklenen fotoğraf, sistemin tanıdığı bitki türlerine (Domates, Mısır, Elma, Üzüm) ait değil.',
@@ -164,13 +164,13 @@ DISEASE_INFO = {
     }
 }
 
-# --- 2. SINIF İSİMLERİ (Alfabetik Sıra Önemli) ---
+# 2. SINIF İSİMLERİ
 CLASS_NAMES = sorted(list(DISEASE_INFO.keys()))
 if 'Others' in CLASS_NAMES:
     CLASS_NAMES.remove('Others')
     CLASS_NAMES.append('Others')
 
-# --- SAYFA AYARLARI ---
+# SAYFA AYARLARI
 st.set_page_config(page_title="Bitki Doktoru", page_icon="🌿", layout="centered")
 
 st.markdown("""
@@ -184,7 +184,7 @@ st.markdown("""
 st.markdown("<h1 class='title'>Akıllı Bitki Hastalık Tespit Sistemi</h1>", unsafe_allow_html=True)
 st.write("Domates, Elma, Mısır ve Üzüm hastalıklarını yapay zeka ile teşhis edin.")
 
-# --- MODEL YÜKLEME ---
+# MODEL YÜKLEME
 @st.cache_resource
 def load_model():
     try:
@@ -207,14 +207,14 @@ def process_image(image, temizle=False):
     Görüntüyü alır, isteğe bağlı olarak arka planı rembg ile siler
     ve model için tensor formatına çevirir.
     """
-    # 1. ARKA PLAN TEMİZLEME (Magic Touch ✨)
+    # 1. ARKA PLAN TEMİZLEME
     if temizle:
         # PIL Image -> Bytes dönüşümü (Rembg için)
         img_byte_arr = io.BytesIO()
         image.save(img_byte_arr, format='PNG')
         img_byte_arr = img_byte_arr.getvalue()
         
-        # Arka planı uçur!
+        # Arka planı kaldır
         output = remove(img_byte_arr)
         
         # Tekrar PIL Image'a çevir
@@ -230,7 +230,7 @@ def process_image(image, temizle=False):
     # Hem tensoru hem de (varsa temizlenmiş) resmi döndür
     return transform(image).unsqueeze(0), image
 
-# --- ARAYÜZ SEKMELERİ (TABS) ---
+# ARAYÜZ SEKMELERİ (TABS)
 tab1, tab2 = st.tabs(["Hastalık Tahmini", "Nasıl Kullanılır?"])
 
 with tab1:
@@ -245,20 +245,20 @@ with tab1:
         with col2:
             st.image(image, caption='Analiz Edilecek Görüntü', use_container_width=True)
             
-            # --- YENİ ÖZELLİK: CHECKBOX ---
+            # Checkbox
             arkaplan_temizle = st.checkbox("Arka Planı Temizle (Daha net sonuç için)", value=True)
             
-            predict_btn = st.button('Hastalığı Teşhis Et 🔍', use_container_width=True)
+            predict_btn = st.button('Hastalığı Teşhis Et', use_container_width=True)
 
         if predict_btn:
-            with st.spinner('Yapay zeka yaprağı inceliyor... (Arka plan siliniyor)'):
+            with st.spinner('Arka plan siliniyor'):
                 
                 # Fonksiyonu yeni haliyle çağır
                 img_tensor, islenmis_resim = process_image(image, temizle=arkaplan_temizle)
                 
-                # Eğer temizleme yapıldıysa temiz halini göster (Hava atma puanı +10)
+                # Eğer temizleme yapıldıysa temiz halini göster
                 if arkaplan_temizle:
-                     # Resmi biraz küçültüp gösterelim
+                     # Resmi biraz küçültüp göster
                      with col2:
                         st.image(islenmis_resim, caption="Arka Planı Temizlenmiş Görüntü", width=200)
 
@@ -272,7 +272,7 @@ with tab1:
                 
                 tahmin_sinif = CLASS_NAMES[tahmin_index]
                 
-                # --- SONUÇ GÖSTERİMİ ---
+                # SONUÇ GÖSTERİMİ
                 if tahmin_sinif == 'Others':
                     st.warning(f"**Tanımlanamadı / Bitki Değil** (Güven: %{guven:.2f})")
                 else:
